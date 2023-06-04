@@ -30,7 +30,7 @@ int3:		DI
 			ORG		0x039
 X:			WORD	0xF0F0
 X_MAX:		WORD	0x7FFF
-X_MIN:		WORD	0x8003	;Нижняя граница ОДЗ (включительно) 100000000
+X_MIN:		WORD	0x8003	;Нижняя граница ОДЗ (включительно)
 
 START:		DI
 			CLA
@@ -49,4 +49,3 @@ MAIN:		DI				;Запрет прерываний для атомарности о
 ODZ_OK:		ST		$X		
 			EI
 			BR		MAIN
-			
