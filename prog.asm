@@ -30,7 +30,7 @@ int3:		DI
 			ORG		0x039
 X:			WORD	0xF0F0
 X_MAX:		WORD	0x7FFF
-X_MIN:		WORD	0x8003	;Нижняя граница ОДЗ (включительно)
+X_MIN:		WORD	0x8004	;Нижняя граница ОДЗ (включительно)
 
 START:		DI
 			CLA
