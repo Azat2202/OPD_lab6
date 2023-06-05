@@ -12,9 +12,13 @@ default:	IRET
 
 int2:		DI
 			IN		0x4
-			NEG				;Проверка на ОДЗ не требуется потому что после расширения знака выхода за диапазон не произойдет
-			ST		$X
+			NEG
+			CMP		$X_MIN
+			BGE		int2_save
+			LD		$X_MAX
+int2_save:	ST		$X
 			NOP
+			EI
 			IRET
 
 int3:		DI
@@ -28,9 +32,9 @@ int3:		DI
 			IRET
 
 			ORG		0x039
-X:			WORD	0xF0F0
-X_MAX:		WORD	0x7FFF
-X_MIN:		WORD	0x8004	;Нижняя граница ОДЗ (включительно)
+X:			WORD	0x0
+X_MAX:		WORD	0x0053	;Верхняя граница ОДЗ (включительно)
+X_MIN:		WORD	0xFFD4	;Нижняя граница ОДЗ (включительно)
 
 START:		DI
 			CLA
@@ -43,9 +47,9 @@ START:		DI
 MAIN:		DI				;Запрет прерываний для атомарности операции
 			LD		$X		;Загружаем Х
 			SUB		#0x3	;Вычитаем 3
-			CMP		X_MIN	;Если в границах ОДЗ пропускаем запуск максимального значения
+			CMP		$X_MIN	;Если в границах ОДЗ пропускаем запуск максимального значения
 			BGE		ODZ_OK	
-			LD		X_MAX	
+			LD		$X_MAX	
 ODZ_OK:		ST		$X		
 			EI
 			BR		MAIN
