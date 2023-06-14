@@ -10,27 +10,19 @@ v7:	WORD	$default, 	0x180
 
 default:	IRET
 
-int2:	NOP
-	PUSH		;Сохранение аккумулятора
-	IN	0x4
+int2:	IN	0x4
 	NEG
 	CALL	CHECK_ODZ
 	ST	$X
 	NOP
-	POP
-	NOP		;Проверка значения аккумулятора
 	IRET
 
-int3:	NOP
-	PUSH		;Сохранение аккумулятора
-	LD	$X
+int3:	LD	$X
 	NOP		;Отладочная метка
 	ASL
 	ADD	$X	;Вычисление f(x) = 3x+6
 	ADD	#0x6
 	OUT	0x6
-	POP
-	NOP		;Проверка значения аккумулятора
 	IRET
 
 	ORG	0x039
