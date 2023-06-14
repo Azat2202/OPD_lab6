@@ -10,23 +10,19 @@ v7:	WORD	$default, 	0x180
 
 default:	IRET
 
-int2:	DI
-	IN	0x4
+int2:	IN	0x4
 	NEG
 	CALL	CHECK_ODZ
 	ST	$X
 	NOP
-	EI
 	IRET
 
-int3:	DI
-	LD	$X
+int3:	LD	$X
 	NOP		;Отладочная метка
 	ASL
 	ADD	$X	;Вычисление f(x) = 3x+6
 	ADD	#0x6
 	OUT	0x6
-	EI
 	IRET
 
 	ORG	0x039

@@ -55,7 +55,7 @@ span {
             </span><span class="sc4">NOP</span><span class="sc24">
             </span><span class="sc4">IRET</span><span class="sc24">
 
-</span><span class="sc0">int3:</span><span class="sc24">	    </span><span class="sc4">LD</span><span class="sc24">          </span><span class="sc6">$X</span><span class="sc24">
+</span><span class="sc0">int3:</span><span class="sc24">		</span><span class="sc4">LD</span><span class="sc24">          </span><span class="sc6">$X</span><span class="sc24">
             </span><span class="sc4">NOP</span><span class="sc24">                     </span><span class="sc2">;Отладочная метка
 </span><span class="sc24">            </span><span class="sc4">ASL</span><span class="sc24">
             </span><span class="sc4">ADD</span><span class="sc24">         </span><span class="sc6">$X</span><span class="sc24">          </span><span class="sc2">;Вычисление f(x) = 3x+6
